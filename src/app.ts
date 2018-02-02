@@ -8,7 +8,7 @@ app.use(views(resolve(__dirname, '../views'), { extension: 'pug' }));
 
 app.use(async (ctx: koa.Context, next) => {
   await ctx.render('index', {
-    you: '张三',
+    you: '张三111',
     me: '李四111',
   });
 });

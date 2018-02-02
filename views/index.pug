@@ -4,10 +4,78 @@ block title
   title koa-trialer
 
 block content
-  .container
-    .row
-      .col-md-8
-        h1 Hi #{you}
-        p this is #{me}
-      .col-md-4
-        p 测试pug
+  .container-fluid
+    .sidebar
+    .content
+      .row
+        .col-md-6
+          .card
+            img.card-img-top(src="http://o9spjqu1b.bkt.clouddn.com/5570778b-f7fc-4bcf-9df3-e47a6954b75a", data-video="http://video.iblack7.com/tgGnZRn3W4Ajw6PGcA_9Z.mp4")
+            .card-body
+              h4.card-title 电影标题
+              p.card-desc 电影描述
+            .card-footer
+              small.text-muted 1天前更新
+        .col-md-6
+          .card
+            img.card-img-top(src="", data-video="")
+            .card-body
+              h4.card-title 电影标题
+              p.card-desc 电影描述
+            .card-footer
+              small.text-muted 1天前更新
+      .row
+        .col-md-6
+          .card
+            img.card-img-top(src="", data-video="")
+            .card-body
+              h4.card-title 电影标题
+              p.card-desc 电影描述
+            .card-footer
+              small.text-muted 1天前更新
+        .col-md-6
+          .card
+            img.card-img-top(src="", data-video="")
+            .card-body
+              h4.card-title 电影标题
+              p.card-desc 电影描述
+            .card-footer
+              small.text-muted 1天前更新
+  #myModal.modal.fade.bd-example-modal-lg(tabindex="-1", role="dialog",aria-labelledby="myLargeModalLabel", aria-hidden="true")
+    .modal-dialog.modal-lg
+      #videoModal.modal-content
+  script.
+    let player = null;
+    $(document).ready(() => {
+      $('#myModal').on('hidden.bs.modal', (e) => {
+        if (player && player.pause) {
+          player.pause();
+        }
+      });
+
+      $('.card-img-top').click((e) => {
+        const video = $(e.target).data('video');
+        const image = $(e.target).attr('src');
+        console.log(111111, e.target, video ,image);
+        $('#myModal').modal('show');
+
+        if (!player) {
+          player = new DPlayer({
+            container: document.getElementById("videoModal"),
+            screenshot: true,
+            video:{
+              url: video,
+              pic: image,
+            }
+          })
+        } else {
+          if (play.video.currentSrc !== video) {
+            player.switchVidwo({
+              url: video,
+              pic: image,
+              type: 'auto'
+            })
+          }
+        }
+      });
+    })
