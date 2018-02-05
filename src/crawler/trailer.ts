@@ -21,7 +21,6 @@ const visitPage = async () => {
     return Number(new Date()) - Number(startDate);
   };
   console.log('start visit page');
-  console.log(time());
 
   // 声明一个浏览器
   const browser = await puppeteer.launch({
@@ -31,7 +30,6 @@ const visitPage = async () => {
   // 打开页面
   const page = await browser.newPage();
   console.log('open the brower');
-  console.log(time());
   // 打开url
   await page.goto(url, {
     waitUntil: 'networkidle2',
@@ -39,7 +37,6 @@ const visitPage = async () => {
 
   await sleep(3000);
   console.log('finish load page');
-  console.log(time());
 
   // 点击加载更多按钮
   await page.waitForSelector('.more');
@@ -77,7 +74,6 @@ const visitPage = async () => {
   });
 
   console.log(result);
-  console.log(time());
 };
 
 visitPage();

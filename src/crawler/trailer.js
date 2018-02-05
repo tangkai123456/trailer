@@ -51,7 +51,6 @@ var visitPage = function () { return __awaiter(_this, void 0, void 0, function (
                     return Number(new Date()) - Number(startDate);
                 };
                 console.log('start visit page');
-                console.log(time());
                 return [4 /*yield*/, puppeteer.launch({
                         args: ['--no-sandbox'],
                         dumpio: false
@@ -62,7 +61,6 @@ var visitPage = function () { return __awaiter(_this, void 0, void 0, function (
             case 2:
                 page = _a.sent();
                 console.log('open the brower');
-                console.log(time());
                 // 打开url
                 return [4 /*yield*/, page.goto(url, {
                         waitUntil: 'networkidle2'
@@ -74,7 +72,6 @@ var visitPage = function () { return __awaiter(_this, void 0, void 0, function (
             case 4:
                 _a.sent();
                 console.log('finish load page');
-                console.log(time());
                 // 点击加载更多按钮
                 return [4 /*yield*/, page.waitForSelector('.more')];
             case 5:
@@ -125,7 +122,6 @@ var visitPage = function () { return __awaiter(_this, void 0, void 0, function (
             case 12:
                 result = _a.sent();
                 console.log(result);
-                console.log(time());
                 return [2 /*return*/];
         }
     });
